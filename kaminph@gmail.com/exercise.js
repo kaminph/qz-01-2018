@@ -21,7 +21,9 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+
+  //it's a local variable inside this function
+  return false;
 };
 
 quiz.question_01 = function() {
@@ -29,7 +31,7 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return 'Hi!';
 };
 
 quiz.question_02 = function() {
@@ -37,7 +39,7 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  return [{},{},{}];
 };
 
 quiz.question_03 = function() {
@@ -47,7 +49,7 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  return [{name:'Kamin', age:27},{name:'Mook', age:28}];
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,7 +58,9 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+
+  //**** */
+  return {question1:foo, question2:bar};
 };
 
 quiz.question_05 = function(someObject) {
@@ -65,7 +69,11 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+
+
+  someObject.age = 12
+
+  return someObject;
 };
 
 // ----------------------------------------
@@ -82,6 +90,79 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   var carPrice = 0;
   // TODO your code here
 
+
+  if(carName == 'Nissan'){
+    for(var i = 0; i< data.cars.Nissan.length; i++){
+      if(data.cars.Nissan[i].model == model && data.cars.Nissan[i].doors == doors && data.cars.Nissan[i].color != null){
+        for(var j = 0; j < data.cars.Nissan[i].color.length; j++){
+          if(data.cars.Nissan[i].color[j].id == color){
+            carPrice = data.cars.Nissan[i].color[j].carPrice;
+            //console.log('found the car');
+          }
+        }
+      }
+    }
+  }
+
+  if(carName == 'Ford'){
+    for(var i = 0; i< data.cars.Ford.length; i++){
+      if(data.cars.Ford[i].model == model && data.cars.Ford[i].doors == doors && data.cars.Ford[i].color != null){
+        for(var j = 0; j < data.cars.Ford[i].color.length; j++){
+          if(data.cars.Ford[i].color[j].id == color){
+            carPrice = data.cars.Ford[i].color[j].carPrice;
+            //console.log('found the car');
+          }
+        }
+      }
+    }
+  }
+
+  if(carName == 'BMW'){
+    for(var i = 0; i< data.cars.BMW.length; i++){
+      if(data.cars.BMW[i].model == model && data.cars.BMW[i].doors == doors && data.cars.BMW[i].color != null){
+        for(var j = 0; j < data.cars.BMW[i].color.length; j++){
+          if(data.cars.BMW[i].color[j].id == color){
+            carPrice = data.cars.BMW[i].color[j].price;
+            //console.log('found the car!');
+          }
+        }
+      }
+    }
+  }
+
+//   var carData= {
+//     "cars": {
+//         "Nissan": [
+//             {"model":"Sentra", "doors":4, "price": 17000},
+//             {"model":"Maxima", "doors":4,  "price": 18000},
+//             {"model":"GTR", "doors":2,  "price": 210000},
+//             {"model":"Altima", "doors":2,  "price": 23300},
+//             {"model":"LEAF", "doors":2,  "price": 29900},
+//             {"model":"Maxima", "doors":2,  "price": 33270},
+//             {"model":"Versa", "doors":2,  "price": 12110},
+//             {"model":"Juke", "doors":2,  "price": 20900}
+//         ],
+//         "Ford": [
+//             {"model":"Taurus", "doors":4, "price": 21000},
+//             {"model":"Escort", "doors":4,  "price": 22000},
+//             {"model":"Expedition", "doors":4,  "price": 64447},
+//             {"model":"Fusion", "doors":4,  "price": 24000},
+//             {"model":"Fiesta ", "doors":4,  "price": 13995},
+//             {"model":"EcoSport ", "doors":4,  "price": 20995},
+//             {"model":"Edge ", "doors":4,  "price": 30215},
+//             {"model":"Explorer ", "doors":4,  "price": 32985}
+//         ],
+
+//         "BMW": [
+//             {"model":"series 3", "doors":4, 
+//                 "color":[ 
+//                 {"id":"red", "price": 35000 },
+//                 {"id":"silver", "price": 40000 }]
+//             }
+//         ]
+//     }
+// };
+
   return carPrice;
 };
 
@@ -92,8 +173,24 @@ quiz.question_07 = function(data) {
   // ex: '{ make: 'Tesla', model: 'Model S', doors: 4, price: 80000 }'
   // ---------------------------------------------------------------
 
+
+
   var maxPricedCar = {};
   // TODO your code here
+
+
+  data.keys(obj).forEach(function(key) {
+
+    console.log(key, obj[key]);
+  
+  });
+
+
+
+  console.log(data.cars[1]);
+  for(var i = 0; i < data.cars.size; i++){
+    console.log(data.cars.Nissan);
+  }
 
   return maxPricedCar;
 };
@@ -107,6 +204,8 @@ quiz.question_08 = function(data) {
 
   // TODO your code here
 
+  var newCar = {model: "Civic", doors: 4, price: 18840}
+  data.cars.Honda.push(newCar);
   return data;
 };
 
@@ -129,6 +228,8 @@ quiz.question_09 = function(input) {
   input.forEach(function(/* TODO args */) {
     // TODO your code here
     // add name as key, time as value
+
+
   });
   return obj;
 };
@@ -145,11 +246,11 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
-      // TODO your code here
+    .filter(function(value, index) {
+      return input[index].time < 48.5;
     })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .map(function(value, index) {
+      return input[index].name;
     });
   return res;
 };
@@ -166,10 +267,10 @@ quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input.reduce(
-    function(/* TODO args */) {
-      // TODO your code here
+    function(previous, current, currentIndex) {
+      return previous + ", " + current;
     },
-    0 /* TODO set correct starting value */,
+    "",
   );
   return res;
 };

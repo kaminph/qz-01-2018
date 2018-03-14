@@ -1,8 +1,8 @@
 var quiz = require('./exercise.js');
 
-// ----------------------------------------
-//   BASICS
-// ----------------------------------------
+// // ----------------------------------------
+// //   BASICS
+// // ----------------------------------------
 var q0 = quiz.question_00();
 console.log(q0);
 
@@ -15,10 +15,10 @@ console.log(q2);
 var q3 = quiz.question_03();
 console.log(q3);
 
-var q4 = quiz.question_04();
+var q4 = quiz.question_04(quiz.question_01,quiz.question_01);
 console.log(q4);
 
-var q5 = quiz.question_05();
+var q5 = quiz.question_05({});
 console.log(q5);
 
 // ----------------------------------------
